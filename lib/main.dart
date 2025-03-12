@@ -56,9 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Text(movies[index][1]),
               ),
               subtitle: Text("subtitme"),
-              contentPadding: EdgeInsets.all(2),
               trailing: Icon(Icons.arrow_downward),
-              // style: ,
               title: Text(movies[index]),
             );
           },
