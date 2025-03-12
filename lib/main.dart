@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/core/constant/colorConstant.dart';
 import 'package:movieapp/core/constant/textConstant.dart';
+import 'package:movieapp/core/providers/movieProvider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => Movieprovider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -32,12 +39,31 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    final movies = Provider.of<Movieprovider>(context).getAllMovie();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(Textconstant.appName),
       ),
-      body: Center(),
+      body: Center(
+        child: ListView.builder(
+          itemCount: movies.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              leading: CircleAvatar(
+                radius: 30,
+                backgroundColor: Colorconstant.secondaryColor,
+                child: Text(movies[index][1]),
+              ),
+              subtitle: Text("subtitme"),
+              contentPadding: EdgeInsets.all(2),
+              trailing: Icon(Icons.arrow_downward),
+              // style: ,
+              title: Text(movies[index]),
+            );
+          },
+        ),
+      ),
     );
   }
 }
