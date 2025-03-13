@@ -67,7 +67,8 @@ class MovieModel {
       imdbID: json['imdbID'] as String,
       type: json['Type'],
       response: json['Response'],
-      images: json['Images'].map((image) => image).toList(),
+      // images: json['Images'].map((image) => image).toList(),
+      images: List<String>.from(json['Images'] ?? []),
     );
   }
 }
