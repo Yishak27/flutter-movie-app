@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:movieapp/core/constant/colorConstant.dart';
 import 'package:movieapp/core/constant/textConstant.dart';
